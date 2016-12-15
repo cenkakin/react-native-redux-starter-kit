@@ -4,16 +4,19 @@ import { Actions } from 'react-native-router-flux'
 
 class Home extends Component {
 
-  onPress(){
-    Actions.counter();
+  static onPress(sceneKey){
+    Actions[sceneKey]();
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}> React-Native Redux Starter Kit </Text>
-        <TouchableOpacity onPress={() => this.onPress()}>
+        <TouchableOpacity onPress={() => Home.onPress('counter')}>
           <Text style={styles.buttonText}> COUNTER </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => Home.onPress('dashboard')}>
+          <Text style={styles.buttonText}> DASHBOARD </Text>
         </TouchableOpacity>
         <Text style={styles.text}> Welcome! </Text>
         <Image style={styles.image} source={require('../assets/Duck.jpg')} />
